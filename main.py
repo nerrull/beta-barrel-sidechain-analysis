@@ -5,7 +5,8 @@ if __name__ == "__main__":
     groups = read_groups("barrel_groups.txt")
     group_results = {}
     for key, group in groups.items():
-        if key ==6:continue
+        if key ==6:continue#rejected in paper
+	if key ==3:continue#oligomeric
         group_results[key] = []
         for protein in group:
             directory = "data/{}/".format(protein)
