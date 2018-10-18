@@ -9,6 +9,11 @@ AMINOS = ['PRO', 'GLY', 'ALA', 'VAL', 'TRP',
           'SER', 'THR', 'ILE', 'LEU', 'PHE',
           'HIS', 'LYS', 'ARG', 'MET', 'CYS']
 
+AMINOGROUPS = {'POLAR': ['SER', 'THR', 'ASN', 'GLN'],
+               'CHARGED': ['ARG', 'HIS', 'LYS', 'ASP', 'GLU'],
+               'SPECIAL': ['CYS', 'GLY', 'PRO'],
+               'HYDROPHOBIC': ['ALA', 'VAL', 'ILE', 'LEU', 'MET', 'PHE', 'TYR', 'TRP']}
+
 
 class BBarrel:
     def __init__(s, filename, strandsfile):
@@ -20,7 +25,7 @@ class BBarrel:
         s.sig = IOSignature(s)
         s.orients = s.getstrandsorient()
         # s.sig.normalize()
-        print(s.sig)
+        # print(s.sig)
 
     def readstrands(s, strandsfile):
         sti = []
@@ -35,7 +40,7 @@ class BBarrel:
     def get_strands_resis(s):
         subset = []
         for chain in s.stru:
-            print(chain)
+            # print(chain)
             for res in chain:
                 for st in s.sti:
                     if res.id[1] >= st[0] and res.id[1] <= st[1]:
